@@ -57,6 +57,7 @@ jobs:
       shell: bash
       run: |
         eval "$(conda shell.bash hook)" && conda activate test
+        python -c "import pylibxc"
         pytest -rws -v --cov=CADMium --color=yes --cov-report=xml CADMium/
     - name: CodeCov  
       uses: codecov/codecov-action@v1
