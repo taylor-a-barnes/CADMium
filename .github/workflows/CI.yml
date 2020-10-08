@@ -56,7 +56,13 @@ jobs:
     - name: PyTest
       shell: bash
       run: |
+        echo "Before conda"
+        which python
+        python --version
         eval "$(conda shell.bash hook)" && conda activate test
+        echo "After conda"
+        which python
+        python --version
         python -c  "import pylibxc"
         pytest -rws -v --cov=CADMium --color=yes --cov-report=xml CADMium/
     - name: CodeCov  
